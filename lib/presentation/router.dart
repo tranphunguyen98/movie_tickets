@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'screen/home/sc_home.dart';
+import 'screen/login/sc_login.dart';
 import 'screen/splash/sc_splash.dart';
 
 class Router {
@@ -14,13 +15,16 @@ class Router {
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case SPLASH:
         return MaterialPageRoute(builder: (_) => SplashScreen());
+      case LOGIN:
+        return MaterialPageRoute(builder: (_) => LoginScreen());
       default:
         return MaterialPageRoute(
-            builder: (_) => Scaffold(
-                  body: Center(
-                    child: Text('No route defined for ${settings.name}'),
-                  ),
-                ));
+          builder: (_) => Scaffold(
+            body: Center(
+              child: Text('No route defined for ${settings.name}'),
+            ),
+          ),
+        );
     }
   }
 }
