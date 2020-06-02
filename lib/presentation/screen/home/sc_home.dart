@@ -22,6 +22,7 @@ class HomeScreen extends StatelessWidget {
             WidgetHomeEvents(),
             WidgetSpacer(height: 30),
             WidgetHomePlays(),
+            WidgetSpacer(height: 30),
           ],
         ),
       ),
