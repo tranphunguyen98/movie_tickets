@@ -39,3 +39,6 @@ flutter:
   assets:
     - assets/
     - images/
+    - images/events/
+    - images/movie/
+    - images/plays/
