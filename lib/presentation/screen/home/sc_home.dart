@@ -1,6 +1,6 @@
+import 'package:find_seat/presentation/common_widgets/widget_spacer.dart';
 import 'package:flutter/material.dart';
 
-import '../../common_widgets/barrel_common_widgets.dart';
 import 'barrel_home.dart';
 
 class HomeScreen extends StatelessWidget {

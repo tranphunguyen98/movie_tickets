@@ -38,8 +38,8 @@ class _WidgetShowGalleryState extends State<WidgetShowGallery>
         "images/movie/d4baeb81488e83cb54f041917ff62f59@2x.png", "Kaithi", 98),
     ItemShowVM(
         "images/movie/202693a21503970eac9090537062d5d3.png", "Gabbar", 84),
-    ItemShowVM("images/movie/81c106f1df72317e034fafa6c4975e9f.png",
-        "Pizza - part 2", 98),
+    ItemShowVM(
+        "images/movie/81c106f1df72317e034fafa6c4975e9f.png", "Pizza - part 2", 98),
     ItemShowVM(
         "images/movie/61d30e82f43b1cab9f49e576ae457086@2x.png", "Asuran", 94),
     ItemShowVM(

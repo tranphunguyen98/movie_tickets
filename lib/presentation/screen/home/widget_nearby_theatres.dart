@@ -42,8 +42,8 @@ class _WidgetNearbyTheatresState extends State<WidgetNearbyTheatres> {
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(10.865308, 106.749148),
-    zoom: 10.4746,
+    target: LatLng(21.013298, 105.827523),
+    zoom: 14.4746,
   );
 
   _buildGoogleMap() {
@@ -56,15 +56,15 @@ class _WidgetNearbyTheatresState extends State<WidgetNearbyTheatres> {
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
 
-          // LatLng southwest = LatLng(10.875308, 106.799148);
-          // LatLng northeast = LatLng(10.475308, 106.499148);
+          LatLng southwest = LatLng(20.994607, 105.786714);
+          LatLng northeast = LatLng(21.047550, 105.840251);
 
-          // Future.delayed(Duration(seconds: 1), () {
-          //   controller.animateCamera(
-          //     CameraUpdate.newLatLngBounds(
-          //         LatLngBounds(southwest: southwest, northeast: northeast), 0),
-          //   );
-          // });
+          Future.delayed(Duration(seconds: 1), () {
+            controller.animateCamera(
+              CameraUpdate.newLatLngBounds(
+                  LatLngBounds(southwest: southwest, northeast: northeast), 0),
+            );
+          });
 
           _createMarker(context);
         },
@@ -82,9 +82,9 @@ class _WidgetNearbyTheatresState extends State<WidgetNearbyTheatres> {
 
   _addMarker(BitmapDescriptor bmp) {
     Map<String, LatLng> cines = new Map<String, LatLng>();
-    cines["CGV Thủ Đức"] = LatLng(10.875308, 106.799148);
-    cines["CGV Hùng Dũng"] = LatLng(10.845308, 106.719148);
-    cines["CGV Phú Nguyện"] = LatLng(10.865308, 106.749148);
+    cines["BHD Phạm Ngọc Thạch"] = LatLng(21.0127928,105.8337666);
+    cines["BHD Cầu Giấy"] = LatLng(21.035257, 105.794364);
+    cines["BHD Trung Hòa"] = LatLng(21.013758, 105.800307);
 
     cines.forEach((markerIdVal, latLng) {
       final MarkerId markerId = MarkerId(markerIdVal);
@@ -94,9 +94,7 @@ class _WidgetNearbyTheatresState extends State<WidgetNearbyTheatres> {
         icon: bmp,
         position: latLng,
         infoWindow: InfoWindow(title: markerIdVal, snippet: '*'),
-        onTap: () {
-          print('Clicked');
-        },
+        onTap: () {},
       );
 
       setState(() {
