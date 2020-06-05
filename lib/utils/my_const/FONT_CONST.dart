@@ -37,6 +37,7 @@ class FONT_CONST {
   static final REGULAR_GRAY1_50_9 = REGULAR_GRAY1_50.copyWith(fontSize: 9);
 
   static final REGULAR_BLACK2 = REGULAR.copyWith(color: COLOR_CONST.BLACK2);
+  static final REGULAR_BLACK2_10 = REGULAR_BLACK2.copyWith(fontSize: 10);
   static final REGULAR_BLACK2_12 = REGULAR_BLACK2.copyWith(fontSize: 12);
   static final REGULAR_BLACK2_14 = REGULAR_BLACK2.copyWith(fontSize: 14);
 
@@ -73,6 +74,9 @@ class FONT_CONST {
   static final MEDIUM_BLACK2_14 = MEDIUM_BLACK2.copyWith(fontSize: 14);
   static final MEDIUM_BLACK2_16 = MEDIUM_BLACK2.copyWith(fontSize: 16);
 
+  static final MEDIUM_BLUE = MEDIUM.copyWith(color: COLOR_CONST.BLUE);
+  static final MEDIUM_BLUE_14 = MEDIUM_BLUE.copyWith(fontSize: 14);
+
   //SEMI_BOLD
   static final SEMIBOLD_WHITE = SEMIBOLD.copyWith(color: COLOR_CONST.WHITE);
   static final SEMIBOLD_WHITE_10 = SEMIBOLD_WHITE.copyWith(fontSize: 10);
@@ -85,8 +89,6 @@ class FONT_CONST {
     fontWeight: FontWeight.w400,
   );
 
-  static final OSWALD_REGULAR_RED2 =
-      OSWALD_REGULAR.copyWith(color: COLOR_CONST.RED2);
-  static final OSWALD_REGULAR_RED2_12 =
-      OSWALD_REGULAR_RED2.copyWith(fontSize: 12);
+  static final OSWALD_REGULAR_RED2 = OSWALD_REGULAR.copyWith(color: COLOR_CONST.RED2);
+  static final OSWALD_REGULAR_RED2_12 = OSWALD_REGULAR_RED2.copyWith(fontSize: 12);
 }
