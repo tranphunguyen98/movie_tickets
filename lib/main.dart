@@ -1,32 +1,18 @@
-import 'package:find_seat/utils/my_const/my_const.dart';
+import 'package:find_seat/app_config.dart';
+import 'package:find_seat/presentation/router.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import 'presentation/router.dart';
+import 'my_app.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      statusBarColor: COLOR_CONST.STATUS_BAR,
+  MyApp.initSystemDefault();
+
+  runApp(
+    AppConfig(
+      appName: "FindSeat Dev",
+      flavorName: "dev",
+      initialRoute: Router.LIST_ALL_CINE,
+      child: MyApp(),
     ),
   );
-
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: COLOR_CONST.DEFAULT,
-        accentColor: COLOR_CONST.DEFAULT,
-        hoverColor: COLOR_CONST.GREEN,
-        fontFamily: 'Poppins',
-      ),
-      onGenerateRoute: Router.generateRoute,
-      initialRoute: Router.BOOK_SEAT_SLOT,
-    );
-  }
 }
