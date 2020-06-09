@@ -9,11 +9,11 @@ part of 'banner.dart';
 Banner _$BannerFromJson(Map<String, dynamic> json) {
   return Banner(
     id: json['id'] as int,
-    url: json['url'] as String,
+    url: json['image'] as String,
   );
 }
 
 Map<String, dynamic> _$BannerToJson(Banner instance) => <String, dynamic>{
       'id': instance.id,
-      'url': instance.url,
+      'image': instance.url,
     };

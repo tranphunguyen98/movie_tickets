@@ -1,5 +1,8 @@
 import 'package:find_seat/presentation/common_widgets/widget_spacer.dart';
 import 'package:find_seat/presentation/screen/home/bloc/bloc.dart';
+import 'package:find_seat/presentation/screen/home/home_banner/bloc/bloc.dart';
+import 'package:find_seat/presentation/screen/home/home_categories/bloc/bloc.dart';
+import 'package:find_seat/presentation/screen/home/recommended_seats/bloc/bloc.dart';
 import 'package:find_seat/utils/my_const/my_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,43 +23,78 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
-      builder: (context, state) {
-        if (state is HomeLoading) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (state is HomeLoaded) {
-          return Scaffold(
-            body: Container(
-              color: COLOR_CONST.WHITE,
-              child: ListView(
-                children: <Widget>[
-                  WidgetHomeToolbar(),
-                  WidgetHomeBanner(),
-                  WidgetSpacer(height: 30),
-                  WidgetHomeCategories(),
-                  WidgetSpacer(height: 30),
-                  WidgetRecommendedSeats(),
-                  WidgetSpacer(height: 30),
-                  WidgetNearbyTheatres(),
-                  WidgetSpacer(height: 30),
-                  WidgetHomeEvents(),
-                  WidgetSpacer(height: 30),
-                  WidgetHomePlays(),
-                  WidgetSpacer(height: 30),
-                ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+            create: (context) =>
+                HomeBannerBloc(homeBloc: BlocProvider.of<HomeBloc>(context))),
+        BlocProvider(
+            create: (context) =>
+                HomeCategoryBloc(homeBloc: BlocProvider.of<HomeBloc>(context))),
+        BlocProvider(
+            create: (context) =>
+                RecommendedSeatsBloc(homeBloc: BlocProvider.of<HomeBloc>(context))),
+      ],
+      child: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          return SafeArea(
+            child: Scaffold(
+              body: Container(
+                color: COLOR_CONST.WHITE,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    WidgetHomeToolbar(),
+                    _buildContent(state),
+                  ],
+                ),
               ),
             ),
           );
-        } else if (state is HomeNotLoaded) {
-          return Center(
-            child: Text('Cannot load data'),
-          );
-        } else {
-          return Text('Unknown state');
-        }
-      },
+        },
+      ),
     );
+  }
+
+  Widget _buildContent(HomeState state) {
+    if (state is HomeLoaded) {
+      return Expanded(
+        child: ListView(
+          shrinkWrap: true,
+          children: <Widget>[
+            WidgetHomeBanner(),
+            WidgetSpacer(height: 30),
+            WidgetHomeCategories(),
+            WidgetSpacer(height: 30),
+            WidgetRecommendedSeats(),
+            WidgetSpacer(height: 30),
+            WidgetNearbyTheatres(),
+            WidgetSpacer(height: 30),
+            WidgetHomeEvents(),
+            WidgetSpacer(height: 30),
+            WidgetHomePlays(),
+            WidgetSpacer(height: 30),
+          ],
+        ),
+      );
+    } else if (state is HomeLoading) {
+      return Expanded(
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    } else if (state is HomeNotLoaded) {
+      return Expanded(
+        child: Center(
+          child: Text('Cannot load data'),
+        ),
+      );
+    } else {
+      return Expanded(
+        child: Center(
+          child: Text('Unknown state'),
+        ),
+      );
+    }
   }
 }
