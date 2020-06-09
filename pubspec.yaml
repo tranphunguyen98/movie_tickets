@@ -16,6 +16,9 @@ dependencies:
   google_sign_in: ^4.5.1
   firebase_auth: ^0.16.1
   rxdart: ^0.23.0
+  retrofit: any
+  json_annotation: any
+  carousel_slider: ^1.4.1
 
   cupertino_icons: ^0.1.2
 
@@ -28,7 +31,10 @@ dev_dependencies:
   sprintf: "^4.0.0"
   uuid: "2.0.1"
   flutter_svg: ^0.17.4
-
+  dio: 3.0.9
+  retrofit_generator: any
+  build_runner: any
+  json_serializable: any
 flutter:
 
   uses-material-design: true
